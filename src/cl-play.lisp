@@ -43,16 +43,18 @@
                  (profile :opengl-any-profile)
                  (major 1)
                  (minor 0))
-  (make-instance 'gl-app
-                 :window (glfw:create-window :title title
-                                             :width width
-                                             :height height
-                                             :resizable nil
-                                             :client-api api
-                                             :opengl-profile profile
-                                             :context-version-major major
-                                             :context-version-minor minor)
-                 :program nil))
+  (let ((window (glfw:create-window :title title
+                                    :width width
+                                    :height height
+                                    :resizable nil
+                                    :client-api api
+                                    :opengl-profile profile
+                                    :context-version-major major
+                                    :context-version-minor minor)))
+    (print window)
+    (make-instance 'gl-app
+                   :window window
+                   :program nil)))
 
 (defmethod closep ((app gl-app))
   (let ((window (ref-window app)))
