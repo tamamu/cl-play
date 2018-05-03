@@ -12,7 +12,9 @@
 ;; blah blah blah.
 
 (with-init
-  (play (make-app "Test")
-    (format t "foo~%")))
+  (let ((app (make-app "Test")))
+    (print app)
+    (play app
+      (format t "foo~%"))))
 
 (finalize)
